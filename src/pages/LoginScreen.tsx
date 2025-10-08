@@ -5,22 +5,15 @@ import {Link as RouterLink, useNavigate} from 'react-router-dom';
 
 import FormikEmailInput from '../components/formik/FormikEmailInput';
 import FormikPasswordInput from '../components/formik/FormikPasswordInput';
-import {useStore} from '../lib/hooks/useStore.ts';
-import useApi from '../lib/hooks/useApi.ts';
-
-type LoginValues = {
-  email: string;
-  password: string;
-};
+import {useTranslation} from 'react-i18next';
 
 export default function LoginScreen() {
   const navigate = useNavigate();
-  const {userStore} = useStore();
-  const api = useApi();
+  const {t} = useTranslation();
 
-  const initialValues: LoginValues = {
-    email: 'admin@admin.com',
-    password: 'admin',
+  const initialValues = {
+    email: '',
+    password: '',
   };
 
   const validationSchema = Yup.object({
@@ -28,26 +21,14 @@ export default function LoginScreen() {
     password: Yup.string().required('Password is required'),
   });
 
-  const handleSubmit = (data: any) => {
-    api.login(data).handle({
-      onSuccess: () => {
-        console.log('Success');
-      },
-      onError: () => {
-        console.log('Error');
-      },
-      onFinally: () => {
-        console.log('Finish');
-      },
-    });
+  const handleSubmit = () => {
+    navigate('/home', {replace: true});
   };
 
-  const formik = useFormik<LoginValues>({
+  const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: () => {
-      console.log('submitted');
-    },
+    onSubmit: handleSubmit,
   });
 
   return (
@@ -60,59 +41,77 @@ export default function LoginScreen() {
         px: 2,
       }}>
       <Paper elevation={3} sx={{width: '100%', maxWidth: 420, p: 4}}>
-        <Typography variant="h4" fontWeight={700} gutterBottom>
-          Login
+        <Typography variant="h4" fontWeight={400} gutterBottom>
+          {t('login.title')}
         </Typography>
         <FormikProvider value={formik}>
           <Stack spacing={2.5}>
             <Field
               component={FormikEmailInput}
               name="email"
-              label="Email"
-              placeholder="you@example.com"
+              label={t('login.email')}
+              placeholder=""
               fullWidth
               autoFocus
             />
             <Field
               component={FormikPasswordInput}
               name="password"
-              label="Password"
-              placeholder="123456789"
+              label={t('login.password')}
+              placeholder=""
               fullWidth
             />
             <Button
               type="submit"
               variant="contained"
               size="large"
-              onClick={() => {
-                console.log('Submitted');
-              }}
-              disabled={formik.isSubmitting || !formik.isValid}>
-              {formik.isSubmitting ? 'Signing in…' : 'Sign in'}
+              onClick={formik.onSubmit}>
+              {t('login.loginButton')}
             </Button>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <Button
-                component={RouterLink}
-                to="/forgot-password"
-                variant="text"
-                size="small"
-                sx={{alignSelf: 'flex-start'}}>
-                Forgot password?
-              </Button>
-              <Typography>Don't have an account?,</Typography>
-              <Button
-                component={RouterLink}
-                to="/sign-up"
-                variant="text"
-                size="small">
-                Sign Up!
-              </Button>
-            </Box>
+            <Stack spacing={1.25} sx={{mt: 0.5}}>
+              <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                <Button
+                  component={RouterLink}
+                  to="/forgot-password"
+                  variant="text"
+                  size="small"
+                  disableRipple
+                  sx={{
+                    textTransform: 'none',
+                    px: 0,
+                    minWidth: 0,
+                    fontWeight: 600,
+                    alignSelf: 'center',
+                  }}>
+                  {t('login.forgotPassword')}
+                </Button>
+              </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 0.75,
+                }}>
+                <Typography variant="body2" color="text.secondary">
+                  {t('login.noAccount')}
+                </Typography>
+                <Button
+                  component={RouterLink}
+                  to="/sign-up"
+                  variant="text"
+                  size="small"
+                  disableRipple
+                  sx={{
+                    textTransform: 'none',
+                    px: 0,
+                    minWidth: 0,
+                    fontWeight: 700,
+                  }}>
+                  {t('signUp.signUpButton')}
+                </Button>
+              </Box>
+            </Stack>
           </Stack>
         </FormikProvider>
       </Paper>
