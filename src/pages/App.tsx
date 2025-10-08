@@ -1,12 +1,10 @@
-import '../App.css'
+import {BrowserRouter} from 'react-router-dom';
+import AppRoutes from '../routes/routes';
 
-function App() {
-
+export default function App() {
   return (
-    <div className="text-3xl font-bold text-blue-600">
-      Tailwind is working!
-    </div>
-  )
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
 }
-
-export default App
