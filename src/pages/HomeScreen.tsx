@@ -1,11 +1,21 @@
-import {Box, Button, Paper, Stack, Typography} from '@mui/material';
-import {useTranslation} from 'react-i18next';
-import {useStore} from '../lib/hooks/useStore';
+import {
+  Box,
+  Button,
+  FormControlLabel,
+  Paper,
+  Stack,
+  Switch,
+  Typography,
+} from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { useStore } from '../lib/hooks/useStore';
+import { useTheme } from '../lib/hooks/useTheme';
 import LanguageSelect from '../components/organisims/LanguageSelect.tsx';
 
 export default function HomeScreen() {
-  const {userStore} = useStore();
-  const {t} = useTranslation();
+  const { userStore, themeStore } = useStore();
+  const { theme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -16,7 +26,7 @@ export default function HomeScreen() {
         justifyContent: 'center',
         px: 2,
       }}>
-      <Paper elevation={2} sx={{width: '100%', maxWidth: 960, p: 3}}>
+      <Paper elevation={2} sx={{ width: '100%', maxWidth: 960, p: 3 }}>
         <Box
           sx={{
             display: 'flex',
@@ -29,7 +39,19 @@ export default function HomeScreen() {
           </Typography>
 
           <Stack direction="row" spacing={1.5} alignItems="center">
+            <FormControlLabel
+              sx={{ m: 0 }}
+              control={
+                <Switch
+                  checked={theme.scheme === 'dark'}
+                  onChange={themeStore.toggle}
+                />
+              }
+              label={t('settings.toggleTheme')}
+            />
+
             <LanguageSelect />
+
             <Button
               variant="contained"
               color="primary"

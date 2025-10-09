@@ -1,5 +1,5 @@
-import axios, {AxiosError, AxiosHeaders, type AxiosResponse} from 'axios';
-import rootStore from '../lib/stores/rootStore.ts';
+import axios, { AxiosError, AxiosHeaders, type AxiosResponse } from 'axios';
+import rootStore from '../lib/stores/rootStore.ts'; // --------------- Axios instance ---------------
 
 // --------------- Axios instance ---------------
 const client = axios.create({

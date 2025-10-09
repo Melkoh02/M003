@@ -1,16 +1,16 @@
-import {Field, FormikProvider, useFormik} from 'formik';
+import { Field, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
-import {Box, Button, Paper, Stack, Typography} from '@mui/material';
-import {Link as RouterLink} from 'react-router-dom';
+import { Box, Button, Paper, Stack, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 import FormikEmailInput from '../components/formik/FormikEmailInput';
 import FormikPasswordInput from '../components/formik/FormikPasswordInput';
-import {useTranslation} from 'react-i18next';
-import {useStore} from '../lib/hooks/useStore.ts';
+import { useTranslation } from 'react-i18next';
+import { useStore } from '../lib/hooks/useStore.ts';
 
 export default function LoginScreen() {
-  const {userStore} = useStore();
-  const {t} = useTranslation();
+  const { userStore } = useStore();
+  const { t } = useTranslation();
 
   const initialValues = {
     email: '',
@@ -59,7 +59,7 @@ export default function LoginScreen() {
         justifyContent: 'center',
         px: 2,
       }}>
-      <Paper elevation={3} sx={{width: '100%', maxWidth: 420, p: 4}}>
+      <Paper elevation={3} sx={{ width: '100%', maxWidth: 420, p: 4 }}>
         <Typography variant="h4" fontWeight={400} gutterBottom>
           {t('login.title')}
         </Typography>
@@ -87,8 +87,8 @@ export default function LoginScreen() {
               <Button variant="outlined" size="large" onClick={handleGuest}>
                 {t('login.continueAsGuest')}
               </Button>
-              <Stack spacing={1.25} sx={{mt: 0.5}}>
-                <Box sx={{display: 'flex', justifyContent: 'center'}}>
+              <Stack spacing={1.25} sx={{ mt: 0.5 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <Button
                     component={RouterLink}
                     to="/forgot-password"

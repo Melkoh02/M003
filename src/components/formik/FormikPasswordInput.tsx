@@ -1,9 +1,9 @@
-import {useState} from 'react';
-import {IconButton, InputAdornment} from '@mui/material';
+import { useState } from 'react';
+import { IconButton, InputAdornment } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import {BaseFormikInput} from './BaseFormikInput';
-import type {BaseFormikInputProps} from '../../lib/types/formik';
+import { BaseFormikInput } from './BaseFormikInput';
+import type { BaseFormikInputProps } from '../../lib/types/formik';
 
 export default function FormikPasswordInput(props: BaseFormikInputProps) {
   const [show, setShow] = useState(false);

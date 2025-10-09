@@ -1,10 +1,20 @@
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { observer } from 'mobx-react-lite';
 import AppRoutes from '../routes/routes';
+import { useStore } from '../lib/hooks/useStore';
 
-export default function App() {
+const App = observer(function App() {
+  const { themeStore } = useStore();
+
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <ThemeProvider theme={themeStore.theme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </ThemeProvider>
   );
-}
+});
+
+export default App;

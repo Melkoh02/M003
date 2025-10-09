@@ -1,7 +1,7 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import type {FormikSelectInputProps, Option} from '../../lib/types/formik';
+import type { FormikSelectInputProps, Option } from '../../lib/types/formik';
 
 export default function FormikSelectInput(props: FormikSelectInputProps) {
   const {

@@ -1,13 +1,13 @@
-import {Field, FormikProvider, useFormik} from 'formik';
+import { Field, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
-import {Box, Button, Paper, Stack, Typography} from '@mui/material';
-import {Link as RouterLink} from 'react-router-dom';
+import { Box, Button, Paper, Stack, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 import FormikEmailInput from '../components/formik/FormikEmailInput';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 export default function ForgotPassword() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const initialValues = {
     email: '',
@@ -36,7 +36,7 @@ export default function ForgotPassword() {
         justifyContent: 'center',
         px: 2,
       }}>
-      <Paper elevation={3} sx={{width: '100%', maxWidth: 420, p: 4}}>
+      <Paper elevation={3} sx={{ width: '100%', maxWidth: 420, p: 4 }}>
         <Typography variant="h4" fontWeight={400} gutterBottom>
           {t('forgotPassword.title')}
         </Typography>
@@ -54,7 +54,7 @@ export default function ForgotPassword() {
               <Button type="submit" variant="contained" size="large">
                 {t('forgotPassword.submitButton')}
               </Button>
-              <Stack spacing={1.25} sx={{mt: 0.5}}>
+              <Stack spacing={1.25} sx={{ mt: 0.5 }}>
                 <Box
                   sx={{
                     display: 'flex',

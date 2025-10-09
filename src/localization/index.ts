@@ -1,13 +1,13 @@
-import i18n, {type LanguageDetectorModule, type Resource} from 'i18next';
-import {initReactI18next} from 'react-i18next';
+import i18n, { type LanguageDetectorModule, type Resource } from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 import en from './locales/en.json';
 import es from './locales/es.json';
-import {LANGUAGE_KEY as LANG_KEY} from '../lib/constants';
+import { LANGUAGE_KEY as LANG_KEY } from '../lib/constants';
 
 const resources: Resource = {
-  en: {translation: en},
-  es: {translation: es},
+  en: { translation: en },
+  es: { translation: es },
 };
 
 const languageDetector: LanguageDetectorModule = {
@@ -52,7 +52,7 @@ void i18n
     {
       resources,
       fallbackLng: 'en',
-      react: {useSuspense: false},
+      react: { useSuspense: false },
     },
     () => {
       // ready

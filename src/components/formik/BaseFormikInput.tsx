@@ -1,5 +1,5 @@
 import TextField from '@mui/material/TextField';
-import type {BaseFormikInputProps} from '../../lib/types/formik.ts';
+import type { BaseFormikInputProps } from '../../lib/types/formik.ts';
 
 export function BaseFormikInput({
   field,
