@@ -12,18 +12,19 @@ export default function FormikPasswordInput(props: BaseFormikInputProps) {
     <BaseFormikInput
       type={show ? 'text' : 'password'}
       autoComplete="current-password"
-      // TODO: check InputProps deprecated flag
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton
-              aria-label={show ? 'Hide password' : 'Show password'}
-              onClick={() => setShow(s => !s)}
-              edge="end">
-              {show ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
-          </InputAdornment>
-        ),
+      slotProps={{
+        input: {
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label={show ? 'Hide password' : 'Show password'}
+                onClick={() => setShow(s => !s)}
+                edge="end">
+                {show ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        },
       }}
       {...props}
     />
