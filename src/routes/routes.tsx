@@ -12,7 +12,7 @@ const AppRoutes = observer(function AppRoutes() {
 
   return (
     <Box sx={{height: '100vh', width: '100%', display: 'flex', flex: 1}}>
-      {userStore.user ? <HomeRoutes /> : <AuthRoutes />}
+      {userStore?.user ? <HomeRoutes /> : <AuthRoutes />}
     </Box>
   );
 });
