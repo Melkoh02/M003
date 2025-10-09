@@ -37,7 +37,8 @@
   "backToLogin": "Voler a"
  },
  "home": {
-  "title": "Pantalla de Inicio"
+  "title": "Pantalla de Inicio",
+  "welcome": "Bienvenidos a M003"
  },
  "settings": {
   "title": "Pantalla de Configuraciones",

@@ -36,7 +36,8 @@
   "backToLogin": "Back to"
  },
  "home": {
-  "title": "Home Screen"
+  "title": "Home Screen",
+  "welcome": "Welcome to M003"
  },
  "settings": {
   "title": "Settings Screen",
